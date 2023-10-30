@@ -26,9 +26,41 @@ def main():
 
 			game = dict()
 
-			game['id'] = gameId
-			game['title'] = idx['_source']['title']
-			game['year'] = idx['_source']['releases_years'][0]['year']
+			game["Entered by"] = ""
+			game['Number'] = gameId
+			game['Game'] = idx['_source']['title']
+			game["Thumbnail"] = ""
+			if idx['_source']['medias']:
+				game["Cover image"] = "https://api.swissgames.garden"+ idx['_source']['medias'][0]['href']
+			else:
+				game["Cover image"] = ''
+			game["Screenshot 1"] = ""
+			game["Screenshot 2"] = ""
+			game["Screenshot 3"] = ""
+			game['Year'] = idx['_source']['releases_years'][0]['year']
+			if 'studios' in idx["_source"]:
+				game["Developer studio"] = idx["_source"]['studios'][0]['name']
+			else:
+				game["Developer studio"] = ""
+			game["Publisher"] = ""
+			game["Main developer"] = ""
+			if 'people' in idx['_source']:
+				game["All involved Person (Developers; Programm; Grafik; Musik; usw.)"] = ','.join([person['fullname'] for person in idx['_source']['people']])
+			else:
+				game["All involved Person (Developers; Programm; Grafik; Musik; usw.)"] = ""
+			game['Platform'] = ','.join([platform['platform_name'] for platform in idx['_source']['releases']])
+			if 'genres' in idx['_source']:
+				game['Genre'] = ','.join([genre['name'] for genre in idx['_source']['genres']])
+			else:
+				game['Genre'] = ""
+			game['Setting'] = ''
+			game["Source 1"] = ""
+			game["Source 2"] = ""
+			game["Source 3"] = ""
+			game["Reviews"] = ""
+			game["Article"] = ""
+			game["Complete"] = ""
+			game['Online'] = ''
 			games_dict[gameId] = game
 		
 	# Pretty print
@@ -39,7 +71,7 @@ def main():
 	df = pd.DataFrame.from_dict(games_dict, orient ='index')
 
 	# Dataframe to excel sheet
-	df.to_excel("/Users/johancuda/Documents/UNIL/Synergia/scraping_sgg/test2.xlsx", sheet_name = 'test', index= False)
+	df.to_excel("/Users/johancuda/Documents/UNIL/Synergia/scraping_sgg/test3.xlsx", sheet_name = 'test', index= False)
 
 
 
