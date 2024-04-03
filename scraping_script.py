@@ -5,7 +5,7 @@ import pandas as pd
 def main():
 
 	# TODO : optimize this
-	# List of links to get all the gaems
+	# List of links to get all the games
 	url_list = ["https://api.swissgames.garden/search/games?page=0&release_year_range%5Bend%5D=2000&release_year_range%5Bstart%5D=1967#",
 	"https://api.swissgames.garden/search/games?page=1&release_year_range%5Bend%5D=2000&release_year_range%5Bstart%5D=1967#",
 	"https://api.swissgames.garden/search/games?page=2&release_year_range%5Bend%5D=2000&release_year_range%5Bstart%5D=1967#",
@@ -14,7 +14,7 @@ def main():
 	games_dict = dict()
 
 
-	# Requets json from API and turns it into a dict
+	# Requets json from API and turns it into a dictionary
 	for url in url_list:
 		response = requests.get(url)
 		api_file = response.json()
@@ -64,14 +64,14 @@ def main():
 			games_dict[gameId] = game
 		
 	# Pretty print
-	print(json.dumps(games_dict, indent=4, sort_keys=True))
+	#print(json.dumps(games_dict, indent=4, sort_keys=True))
 
 
 	# Turns dict into a Dataframe
 	df = pd.DataFrame.from_dict(games_dict, orient ='index')
 
 	# Dataframe to excel sheet
-	df.to_excel("/Users/johancuda/Documents/UNIL/Synergia/scraping_sgg/test3.xlsx", sheet_name = 'test', index= False)
+	df.to_excel("./sgg_data.xlsx", sheet_name = 'data', index= False)
 
 
 
