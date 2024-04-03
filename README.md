@@ -8,6 +8,8 @@ Since the API doesn't allow full access to Swiss Games Garden's data, some of th
 
 The variable containing all the links to the API responses is not very elegant, but since the data doesn't have a `next` key I had to manually check all the pages containing data te retrieve them.
 
+You can find the final resulat in the `results` folder.
+
 ## Installation
 
 We advise you to work in a virtualenv. To install the `requirements.txt` file, run the following command in a terminal:
