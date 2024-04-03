@@ -4,11 +4,11 @@ A project that extracts all pre 2000 games on the [Swiss Games Garden](https://s
 
 ## Remarks
 
-Since the API doesn't allow full access to Swiss Games Garden's data, some of the fields in the excel sheet are left blank.
+1. Since the API doesn't allow full access to the Swiss Games Garden's data, some of the fields in the excel sheet are left blank.
 
-The variable containing all the links to the API responses is not very elegant, but since the data doesn't have a `next` key I had to manually check all the pages containing data te retrieve them.
+2. The variable containing all the links to the API responses is not very elegant, but since the data doesn't have a `next` key I had to manually check all the pages containing data te retrieve them.
 
-You can find the final resulat in the `results` folder.
+3. You can find the final resulat in the `results` folder.
 
 ## Installation
 
